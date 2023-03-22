@@ -3,7 +3,7 @@
 ### To Hard Code Credentials go to file [HardCodeCredentials.ps1](https://github.com/esraa224455/CSOM/blob/master/HardCodeCredentials.ps1)
 To avoid credential popups, you can store your credentials in the Windows credentials store and connect to SharePoint Online without a prompt! 
 This is extremely useful for unattended PowerShell scripts! Here is how to create a stored credential: Open Control Panel >> Windows credential manager >> Select Windows Credentials >> Click on “Add a new Generic credential” >> Enter the credentials.
-I’ve used “CSOM” instead of "SPO"as the credential name here.
+I’ve used “CSOM” instead of "SPO"
 
 <img src="https://www.sharepointdiary.com/wp-content/uploads/2021/12/sharepoint-online-powershell-credential-manager.png" width ="600">
 change site url & credential name then Run
