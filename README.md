@@ -22,11 +22,15 @@ $ListName="NewList"
 ## CRUD On List Items
 
 ### To Add New Item Go to file : [AddListItem.ps1](https://github.com/esraa224455/CSOM/blob/master/AddListItem.ps1)
-Just change list Name then Run
+change list Name Titles of columns then Run
 ```
 $ListName="NewList"
+$ListItem["Title"] = "Darwin"
+ 
+$ListItem["Department"] = "Eng" 
+$ListItem["Location"] = "Egy" 
 ```
-### To Add Read Items of List Go to file : [ReadItemsOfList.ps1](https://github.com/esraa224455/CSOM/blob/master/ReadItemsOfList.ps1)
+### To Read Items of List Go to file : [ReadItemsOfList.ps1](https://github.com/esraa224455/CSOM/blob/master/ReadItemsOfList.ps1)
 change list Name & Titles of columns then Run
 ```
 $ListName="NewList"
@@ -36,7 +40,7 @@ ForEach($Item in $ListItems)
     Write-Host ("List Item ID:{0} - Title:{1}" -f $Item["ID"], $Item["Title"])
 }
 ```
-### To Add Update List Items Go to file : [UpdateListItems.ps1](https://github.com/esraa224455/CSOM/blob/master/UpdateListItems.ps1)
+### To Update List Items Go to file : [UpdateListItems.ps1](https://github.com/esraa224455/CSOM/blob/master/UpdateListItems.ps1)
 change list Name , Id Value & select colunm you want to chang it's value give it new value then Run
 ```
 $ListName="Projects"
