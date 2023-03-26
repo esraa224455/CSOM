@@ -15,7 +15,7 @@ $TemplateFile ="$env:TEMP\Template$number.xml"
 
 $ListName= $SourceList.title
 
-Get-PnPSiteTemplate -Out $TemplateFile -ListsToExtract $ListName -Handlers Lists
+Get-PnPSiteTemplate -Out $TemplateFile -ListsToExtract $ListName -Handlers Lists 
 
 #Get Data from source List
 Add-PnPDataRowsToSiteTemplate -Path $TemplateFile -List $ListName 
@@ -23,5 +23,5 @@ Add-PnPDataRowsToSiteTemplate -Path $TemplateFile -List $ListName
 Connect-PnPOnline -Url $TargetSiteURL -Interactive
  
 #Apply the Template
-Invoke-PnPSiteTemplate -Path $TemplateFile
+Invoke-PnPSiteTemplate -Path $TemplateFile 
 }
