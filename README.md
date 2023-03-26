@@ -54,9 +54,21 @@ $ListName="NewList"
 $ItemID="3"
 ```
 ### To Copy One List To Another Site With Content Go to file : [CopyOneListToAnotherSiteWithContent.ps1](https://github.com/esraa224455/CSOM/blob/master/CopyOneListToAnotherSiteWithContent.ps1)
-change  SourceSiteURL & TargetSiteURL & list Name remove then Run
+change  SourceSiteURL & TargetSiteURL & list Name then Run
 ```
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
 $TargetSiteURL = "https://t6syv.sharepoint.com/sites/DestinationTeamSite"
 $ListName= "Projects"
+```
+### To Copy All Lists From Site To Another Go to file : [CopyAllListsFromSiteToAnother.ps1](https://github.com/esraa224455/CSOM/blob/master/CopyAllListsFromSiteToAnother.ps1)
+change  SourceSiteURL & TargetSiteURL then Run
+```
+$SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
+$TargetSiteURL = "https://t6syv.sharepoint.com/sites/DestinationTeamSite"
+```
+### To Copy All Libraries Another Site Go to file : [CopyAllLibrariesToAnotherSite.ps1](https://github.com/esraa224455/CSOM/blob/master/CopyAllLibrariesToAnotherSite.ps1)
+change  SourceSiteURL & TargetSiteURL then Run
+```
+$SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/DestinationTeamSite"
 ```
