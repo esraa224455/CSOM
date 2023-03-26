@@ -8,7 +8,7 @@ $SourceConn = Connect-PnPOnline -URL $SourceSiteURL -Interactive -ReturnConnecti
 $Web = Get-PnPWeb -Connection $SourceConn
  
 #Get all document libraries
-$SourceLibraries =  Get-PnPList -Includes RootFolder -Connection $SourceConn | Where {$_.BaseType -eq "GenericList" -and $_.Hidden -eq $False}
+$SourceLibraries =  Get-PnPList -Includes RootFolder -Connection $SourceConn | Where {$_.BaseType -eq "DocumentLibrary" -and $_.Hidden -eq $False}
  
 #Connect to the destination site
 $DestinationConn = Connect-PnPOnline -URL $DestinationSiteURL -Interactive -ReturnConnection
@@ -22,7 +22,7 @@ ForEach($SourceLibrary in $SourceLibraries)
     If(!($DestinationLibraries.Title -contains $SourceLibrary.Title))
     {
         #Create a document library
-        $NewLibrary  = New-PnPList -Title $SourceLibrary.Title -Template GenericList -Connection $DestinationConn
+        $NewLibrary  = New-PnPList -Title $SourceLibrary.Title -Template DocumentLibrary -Connection $DestinationConn
         Write-host "Document Library '$($SourceLibrary.Title)' created successfully!" -f Green
     }
     else
@@ -51,7 +51,7 @@ ForEach($SourceLibrary in $SourceLibraries)
     #Copy Items to the Destination
     $RootFolderItems | ForEach-Object {
         $DestinationURL = $DestinationLibrary.RootFolder.ServerRelativeUrl
-        Copy-PnPList -SourceListUrl $SourceLibraryURL -DestinationWebUrl $DestinationLibraryURL
+        Copy-PnPFile -SourceUrl $_.ServerRelativeUrl -TargetUrl $DestinationLibraryURL -Force -OverwriteIfAlreadyExists
         Write-host "`tCopied '$($_.ServerRelativeUrl)'" -f Green   
     }   
     Write-host "`tContent Copied from $SourceLibraryURL to  $DestinationLibraryURL Successfully!" -f Cyan
