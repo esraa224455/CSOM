@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-﻿
-=======
-
->>>>>>> e355de3382b277ebc23e52ba38b98a7ace14960f
 Clear-Host
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
 $TargetSiteURL = "https://t6syv.sharepoint.com/sites/DestinationTeamSite"
@@ -26,8 +21,4 @@ Connect-PnPOnline -Url $TargetSiteURL -Interactive
  
 #Apply the Template
 Invoke-PnPSiteTemplate -Path $TemplateFile
-<<<<<<< HEAD
 
-
-=======
->>>>>>> e355de3382b277ebc23e52ba38b98a7ace14960f
