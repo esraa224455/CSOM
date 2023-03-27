@@ -6,9 +6,9 @@ $Cred = Get-PnPStoredCredential -Name "CSOM"
  
 $Ctx = New-Object Microsoft.SharePoint.Client.ClientContext($SiteUrl)
 
-$Ctx.Credentials = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($cred.UserName,$cred.Password)
+$Ctx.Credentials = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($cred.UserName, $cred.Password)
  
-$ListName="NewList"
+$ListName = "NewList"
 $ListCreationInfo = New-Object Microsoft.SharePoint.Client.ListCreationInformation
 $ListCreationInfo.Title = $ListName
 $ListCreationInfo.TemplateType = 100
