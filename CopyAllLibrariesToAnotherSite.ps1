@@ -1,12 +1,12 @@
 ﻿clear
 #Parameters
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
-$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/DestinationTeamSite"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/TestCopyTeamSite"
  
 #Connect to the source Site
 $SourceConn = Connect-PnPOnline -URL $SourceSiteURL -Interactive -ReturnConnection
 $Web = Get-PnPWeb -Connection $SourceConn
- 
+#$ExcludedLibraries =  @("Style Library","Preservation Hold Library", "Site Pages", "Site Assets","Form Templates", "Site Collection Images","Site Collection Documents")
 #Get all document libraries
 $SourceLibraries =  Get-PnPList -Includes RootFolder -Connection $SourceConn | Where {$_.BaseType -eq "DocumentLibrary" -and $_.Hidden -eq $False}
  
@@ -18,15 +18,19 @@ $DestinationLibraries = Get-PnPList -Connection $DestinationConn
  
 ForEach($SourceLibrary in $SourceLibraries)
 {
+   
     #Check if the library already exists in target
     If(!($DestinationLibraries.Title -contains $SourceLibrary.Title))
     {
         #Create a document library
+        
         $NewLibrary  = New-PnPList -Title $SourceLibrary.Title -Template DocumentLibrary -Connection $DestinationConn
         Write-host "Document Library '$($SourceLibrary.Title)' created successfully!" -f Green
     }
     else
     {
+        #Remove-PnPList -Identity $SourceLibrary.Title -Force -Recycle -Connection $DestinationConn
+        #$NewLibrary  = New-PnPList -Title $SourceLibrary.Title -Template DocumentLibrary -Connection $DestinationConn
         Write-host "Document Library '$($SourceLibrary.Title)' already exists!" -f Yellow
     }
  
