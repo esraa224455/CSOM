@@ -1,7 +1,7 @@
 ﻿clear
 #Parameters
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
-$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/DestinationTeamSite"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/LastTeam"
 
 Function Copy-PnPAllLists {
     param (
@@ -20,7 +20,15 @@ Function Copy-PnPAllLists {
         Get-PnPSiteTemplate -Out $TemplateFile -ListsToExtract $ListName -Handlers Lists 
 
         #Get Data from source List
-        Add-PnPDataRowsToSiteTemplate -Path $TemplateFile -List $ListName 
+        Add-PnPDataRowsToSiteTemplate -Path $TemplateFile -List $ListName
+        $DestConn = Connect-PnPOnline -Url $DestinationSiteURL -Interactive -ReturnConnection
+        $DestinationLists = Get-PnPList -Connection $DestConn
+        If(($DestinationLists.Title -contains $SourceList.Title))
+        {
+            Connect-PnPOnline -Url $DestinationSiteURL -Interactive
+            Remove-PnPList -Identity $ListName -Force
+            Write-host "Previous List '$($ListName)'removed successfully!" -f Green
+        }  
         #Connect to Target Site
         Connect-PnPOnline -Url $DestinationSiteURL -Interactive
  
@@ -28,4 +36,4 @@ Function Copy-PnPAllLists {
         Invoke-PnPSiteTemplate -Path $TemplateFile 
     }
 }
-Copy-PnPAllLists -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL
+Copy-PnPAllLists -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
