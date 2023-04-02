@@ -23,8 +23,7 @@ Function Copy-PnPAllLists {
         Add-PnPDataRowsToSiteTemplate -Path $TemplateFile -List $ListName
         $DestConn = Connect-PnPOnline -Url $DestinationSiteURL -Interactive -ReturnConnection
         $DestinationLists = Get-PnPList -Connection $DestConn
-        If(($DestinationLists.Title -contains $SourceList.Title))
-        {
+        If (($DestinationLists.Title -contains $SourceList.Title)) {
             Connect-PnPOnline -Url $DestinationSiteURL -Interactive
             Remove-PnPList -Identity $ListName -Force
             Write-host "Previous List '$($ListName)'removed successfully!" -f Green
