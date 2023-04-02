@@ -12,6 +12,17 @@ change site url & credential name then Run
 $SiteUrl = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
 $Cred = Get-PnPStoredCredential -Name "CSOM"
 ```
+## To Create New Site
+### Open file : [CreateNewSite.ps1](https://github.com/esraa224455/CSOM/blob/master/CreateNewSite.ps1) 
+change AdminCenterURL ,SiteURL ,SiteTitle ,SiteOwner ,Template & Timezone then run
+```
+$AdminCenterURL = "https://t6syv-admin.sharepoint.com/"
+$SiteURL = "https://t6syv.sharepoint.com/sites/TeamCopiedSite"
+$SiteTitle = "TeamCopiedSite"
+$SiteOwner = "AlexW@t6syv.onmicrosoft.com"
+$Template = "STS#3" #Modern SharePoint Team Site
+$Timezone = 49
+```
 
 ## To Create List
 ### Open file : [createList.ps1](https://github.com/esraa224455/CSOM/blob/master/createList.ps1) 
@@ -53,6 +64,24 @@ change list Name & ItemID with the values of The item that you Want to remove th
 $ListName="NewList"
 $ItemID="3"
 ```
+### To Copy Site To Another Site Go to file :[CopySiteToAnotherSite.ps1](https://github.com/esraa224455/CSOM/blob/master/CopySiteToAnotherSite.ps1)
+change  SourceSiteURL & DestinationSiteURL 
+```
+$SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/NNewTeam"
+```
+And in Function  Copy-PnPAllLists change Template File path with the path you want to save in 
+```
+$TemplateFile = "$env:TEMP\Template$ListName.xml"
+```
+### To Import Site Template to another Site Url Go to file :[ImportSite.ps1](https://github.com/esraa224455/CSOM/blob/master/ImportSite.ps1)
+change  SourceSiteURL , DestinationSiteURL &  Template 
+```
+$SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
+$Template = "C:\Temp\SiteTemplate1.xml"
+$SourceDestinationURL = "https://t6syv.sharepoint.com/sites/TestCopyTeamSite"
+```
+
 ### To Copy One List To Another Site With Content Go to file : [CopyOneListToAnotherSiteWithContent.ps1](https://github.com/esraa224455/CSOM/blob/master/CopyOneListToAnotherSiteWithContent.ps1)
 change  SourceSiteURL & TargetSiteURL & list Name then Run
 ```
