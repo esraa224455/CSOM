@@ -65,11 +65,17 @@ $ListName="NewList"
 $ItemID="3"
 ```
 ### To Copy Site To Another Site Go to file :[CopySiteToAnotherSite.ps1](https://github.com/esraa224455/CSOM/blob/master/CopySiteToAnotherSite.ps1)
-change  SourceSiteURL & DestinationSiteURL 
+change  SourceSiteURL , DestinationSiteURL, AdminCenterURL ,SiteTitle ,SiteOwner ,Template & Timezone then run
 ```
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
-$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/NNewTeam"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/TeamCopiedSite"
+$AdminCenterURL = "https://t6syv-admin.sharepoint.com/"
+$SiteTitle = "TeamCopiedSite"
+$SiteOwner = "AlexW@t6syv.onmicrosoft.com"
+$Template = "STS#3" #Modern SharePoint Team Site
+$Timezone = 49
 ```
+
 And in Function  Copy-PnPAllLists change Template File path with the path you want to save in 
 ```
 $TemplateFile = "$env:TEMP\Template$ListName.xml"
