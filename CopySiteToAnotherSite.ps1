@@ -106,7 +106,8 @@ Function Copy-PnPAllLists {
         #Connect to the Source Site
         Connect-PnPOnline -Url $SourceSiteURL -Interactive
         $ListName = $SourceList.title
-        $TemplateFile = "$env:TEMP\Template$ListName.xml"
+        
+        $TemplateFile = "$PSScriptRoot\Temp\Template$ListName.xml"
         Get-PnPSiteTemplate -Out $TemplateFile -ListsToExtract $ListName -Handlers Lists 
 
         #Get Data from source List
@@ -123,10 +124,11 @@ Function Copy-PnPAllLists {
  
         #Apply the Template
         Invoke-PnPSiteTemplate -Path $TemplateFile 
+        Write-Host $TemplateFile
     }
 }
 
-CreateSite -AdminCenterURL $AdminCenterURL -DestinationSiteURL $DestinationSiteURL  -SiteTitle $SiteTitle -SiteOwner $SiteOwner -Template $Template -Timezone $Timezone 
+#CreateSite -AdminCenterURL $AdminCenterURL -DestinationSiteURL $DestinationSiteURL  -SiteTitle $SiteTitle -SiteOwner $SiteOwner -Template $Template -Timezone $Timezone 
 
-Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
+#Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
 Copy-PnPAllLists -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
