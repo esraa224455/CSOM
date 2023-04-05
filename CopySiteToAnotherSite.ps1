@@ -128,7 +128,7 @@ Function Copy-PnPAllLists {
     }
 }
 
-#CreateSite -AdminCenterURL $AdminCenterURL -DestinationSiteURL $DestinationSiteURL  -SiteTitle $SiteTitle -SiteOwner $SiteOwner -Template $Template -Timezone $Timezone 
+CreateSite -AdminCenterURL $AdminCenterURL -DestinationSiteURL $DestinationSiteURL  -SiteTitle $SiteTitle -SiteOwner $SiteOwner -Template $Template -Timezone $Timezone 
 
-#Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
+Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
 Copy-PnPAllLists -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
