@@ -1,13 +1,17 @@
 ﻿clear
 #Parameters
-$SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
-$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/TeamssSite"
+$SourceSiteURL = "https://t6syv.sharepoint.com/sites/MOH3"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/MOH4"
 
+$Password = "PASo8543"
+$SecurePassword = ConvertTo-SecureString -String $Password -AsPlainText -Force
+$Cred = New-Object -TypeName System.Management.Automation.PSCredential -argumentlist $SiteOwner, $SecurePassword
+Connect-PnPOnline -Url $SourceSiteURL -Credentials $Cred
 
 $AdminCenterURL = "https://t6syv-admin.sharepoint.com/"
-$SiteTitle = "TeamssSite"
-$SiteOwner = "AlexW@t6syv.onmicrosoft.com"
-$Template = "STS#3" #Modern SharePoint Team Site
+$SiteTitle = "MOH4"
+$SiteOwner = "DiegoS@t6syv.onmicrosoft.com"
+$Template = "SITEPAGEPUBLISHING#0" #Modern SharePoint Team Site
 $Timezone = 49
 Function CreateSite {
     param (
@@ -107,7 +111,7 @@ Function Copy-PnPAllLists {
         Connect-PnPOnline -Url $SourceSiteURL -Interactive
         $ListName = $SourceList.title
         
-        $TemplateFile = "$PSScriptRoot\Temp\Template$ListName.xml"
+        $TemplateFile = "$PSScriptRoot\Temp7\Template$ListName.xml"
         Get-PnPSiteTemplate -Out $TemplateFile -ListsToExtract $ListName -Handlers Lists 
 
         #Get Data from source List
@@ -128,7 +132,7 @@ Function Copy-PnPAllLists {
     }
 }
 
-CreateSite -AdminCenterURL $AdminCenterURL -DestinationSiteURL $DestinationSiteURL  -SiteTitle $SiteTitle -SiteOwner $SiteOwner -Template $Template -Timezone $Timezone 
-
-Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
+#CreateSite -AdminCenterURL $AdminCenterURL -DestinationSiteURL $DestinationSiteURL  -SiteTitle $SiteTitle -SiteOwner $SiteOwner -Template $Template -Timezone $Timezone 
+#Start-Sleep -Seconds 10
+#Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
 Copy-PnPAllLists -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   

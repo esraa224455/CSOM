@@ -1,11 +1,12 @@
 Clear-Host
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
-$TargetSiteURL = "https://t6syv.sharepoint.com/sites/DestinationTeamSite"
+$TargetSiteURL = "https://t6syv.sharepoint.com/sites/LastNewTeam"
 
  
 
-$ListName = "Projects"
-$TemplateFile = "$env:TEMP\Template.xml"
+$ListName = "Tasks"
+
+$TemplateFile = "$PSScriptRoot\Temp5\Template$ListName.xml"
  
 #Connect to the Source Site
 Connect-PnPOnline -Url $SourceSiteURL -Interactive

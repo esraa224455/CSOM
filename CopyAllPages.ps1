@@ -1,6 +1,6 @@
 ﻿#Parameters
-$SourceSiteURL = "https://t6syv.sharepoint.com/sites/NewSite"
-$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/CreationTeamSite"
+$SourceSiteURL = "https://t6syv.sharepoint.com/sites/MOH3"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/MOH2"
  
 #Connect to the Source Site
 Connect-PnPOnline -Url $SourceSiteURL -Interactive
