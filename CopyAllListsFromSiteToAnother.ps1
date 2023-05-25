@@ -1,7 +1,7 @@
 ﻿clear
 #Parameters
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
-$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/LastTeam"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/CopySite"
 
 Function Copy-PnPAllLists {
     param (
@@ -13,7 +13,7 @@ Function Copy-PnPAllLists {
     ForEach ($SourceList in $SourceLists) {
         #Connect to the Source Site
         Connect-PnPOnline -Url $SourceSiteURL -Interactive
-        $TemplateFile = "$env:TEMP\Template$ListName.xml" 
+        $TemplateFile = "$PSScriptRoot\Temp\Template$ListName.xml" 
 
         $ListName = $SourceList.title
 

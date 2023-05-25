@@ -1,14 +1,13 @@
 ﻿Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.dll"
 Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.Runtime.dll"
 Clear-Host
-$SiteUrl = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
-$Cred = Get-PnPStoredCredential -Name "CSOM"
+$SiteUrl = "https://t6syv.sharepoint.com/sites/Newtemplete"
+
  
 $Ctx = New-Object Microsoft.SharePoint.Client.ClientContext($SiteUrl)
 
-$Ctx.Credentials = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($cred.UserName, $cred.Password)
 
-$ListName = "NewList"
+$ListName = "NewRequest"
 $List = $Ctx.Web.Lists.GetByTitle($ListName)
 $ListItems = $List.GetItems([Microsoft.SharePoint.Client.CamlQuery]::CreateAllItemsQuery())
 $Ctx.Load($ListItems)

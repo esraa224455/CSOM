@@ -87,10 +87,10 @@ Function Copy-SPOListItems()
    
 #Set Parameters
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
-$SourceListName = "Countries"
+$SourceListName = "NewTasks"
   
 $DestinationSiteURL = "https://t6syv.sharepoint.com/sites/LastNewTeam"
-$DestinationListName = "Countries"
+$DestinationListName = "NewTasks"
   
 #Connect to Source and destination sites
 $SourceConn = Connect-PnPOnline -Url $SourceSiteURL -Interactive -ReturnConnection

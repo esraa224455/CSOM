@@ -1,12 +1,12 @@
 Clear-Host
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
-$TargetSiteURL = "https://t6syv.sharepoint.com/sites/LastNewTeam"
+$TargetSiteURL = "https://hajrnd.sharepoint.com/sites/Library"
 
  
 
-$ListName = "Tasks"
+$ListName = "Countries"
 
-$TemplateFile = "$PSScriptRoot\Temp5\Template$ListName.xml"
+$TemplateFile = "$PSScriptRoot\Tempmeen\Template$ListName.xml"
  
 #Connect to the Source Site
 Connect-PnPOnline -Url $SourceSiteURL -Interactive
@@ -18,8 +18,8 @@ Get-PnPSiteTemplate -Out $TemplateFile -ListsToExtract $ListName -Handlers Lists
 Add-PnPDataRowsToSiteTemplate -Path $TemplateFile -List $ListName 
  
 #Connect to Target Site
-Connect-PnPOnline -Url $TargetSiteURL -Interactive
+Connect-PnPOnline -Url $TargetSiteURL -credentials
  
 #Apply the Template
-Invoke-PnPSiteTemplate -Path $TemplateFile
+Invoke-PnPSiteTemplate -Path $TemplateFile
 

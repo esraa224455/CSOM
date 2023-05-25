@@ -1,7 +1,7 @@
 ﻿clear
 #Parameters
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/MOH3"
-$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/MOH4"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/CopySite"
 
 $Password = "PASo8543"
 $SecurePassword = ConvertTo-SecureString -String $Password -AsPlainText -Force
@@ -9,7 +9,7 @@ $Cred = New-Object -TypeName System.Management.Automation.PSCredential -argument
 Connect-PnPOnline -Url $SourceSiteURL -Credentials $Cred
 
 $AdminCenterURL = "https://t6syv-admin.sharepoint.com/"
-$SiteTitle = "MOH4"
+$SiteTitle = "CopySite"
 $SiteOwner = "DiegoS@t6syv.onmicrosoft.com"
 $Template = "SITEPAGEPUBLISHING#0" #Modern SharePoint Team Site
 $Timezone = 49
@@ -132,7 +132,7 @@ Function Copy-PnPAllLists {
     }
 }
 
-#CreateSite -AdminCenterURL $AdminCenterURL -DestinationSiteURL $DestinationSiteURL  -SiteTitle $SiteTitle -SiteOwner $SiteOwner -Template $Template -Timezone $Timezone 
-#Start-Sleep -Seconds 10
+CreateSite -AdminCenterURL $AdminCenterURL -DestinationSiteURL $DestinationSiteURL  -SiteTitle $SiteTitle -SiteOwner $SiteOwner -Template $Template -Timezone $Timezone 
+Start-Sleep -Seconds 10
 #Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
-Copy-PnPAllLists -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
+#Copy-PnPAllLists -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL   
