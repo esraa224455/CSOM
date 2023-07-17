@@ -1,5 +1,4 @@
-﻿#Function to Copy All libraries from One Site to another
-Function Copy-PnPAllLibraries
+﻿Function Copy-PnPAllLibraries
 {
     param (
     [parameter(Mandatory=$true, ValueFromPipeline=$true)][string]$SourceSiteURL,

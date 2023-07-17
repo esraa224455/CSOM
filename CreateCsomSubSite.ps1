@@ -17,7 +17,7 @@ $sourceCtx.ExecuteQuery()
 foreach ($SubSite in $SubSites) {
 Try {
     $subSiteTitle = $SubSite.Title
-    #Setup the context
+    
     $Context = New-Object Microsoft.SharePoint.Client.ClientContext($DestinationURL)
     
     $Context.Credentials = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($UserName,(ConvertTo-SecureString $Password -AsPlainText -Force))
