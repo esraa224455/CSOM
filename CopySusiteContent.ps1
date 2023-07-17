@@ -1,54 +1,13 @@
-﻿Clear-Host
-#Parameters
-$SourceSiteURL = "https://t6syv.sharepoint.com/sites/MOH3"
-$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
+﻿#Parameters
+$SourceSiteURL = "https://t6syv.sharepoint.com/sites/SourceClientSite/SourceSubSite"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/RecordSite/SourceSubSite"
 
 $AdminCenterURL = "https://t6syv-admin.sharepoint.com/"
 $SiteTitle = "New225"
 $SiteOwner = "DiegoS@t6syv.onmicrosoft.com"
-$Template = "SITEPAGEPU
-BLISHING#0"
+$Template = "SITEPAGEPUBLISHING#0" 
 $Timezone = 4
-Function CreateSite {
-    param (
-        [parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$AdminCenterURL,
-        [parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$DestinationSiteURL,
-        [parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$SiteTitle,
-        [parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$SiteOwner,
-        [parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$Template,
-        [parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$Timezone
 
-    )
-    Try {
-        
-        #Connect to Tenant Admin
-        Connect-PnPOnline -URL $AdminCenterURL -Interactive
-        #Check if site exists already
-        $Site = Get-PnPTenantSite | Where { $_.Url -eq $DestinationSiteURL }
-        
-        If ($Site -eq $null) {
-            #sharepoint online pnp powershell create a new team site collection
-            New-PnPTenantSite -Owner $SiteOwner -Url $DestinationSiteURL -Title $SiteTitle -Template $Template -RemoveDeletedSite -TimeZone 4
-            write-host "Site Collection $($DestinationSiteURL) Created Successfully!" -foregroundcolor Green
-            Start-Sleep -Seconds 20
-            $Site = Get-PnPTenantSite -Identity $DestinationSiteURL
-            while ($Site.Status -ne "Active") {
-                Write-Host "Site collection is being provisioned. Waiting for 10 seconds..."
-                $Site = Get-PnPTenantSite -Identity $DestinationSiteURL
-            }
-            Start-Process $DestinationSiteURL
-        }
-        else {
-            write-host "Site $($DestinationSiteURL) exists already!" -foregroundcolor Yellow
-        }
-        
-    }
-    catch {
-        write-host "Error: $($_.Exception.Message)" -foregroundcolor Red
-        
-    }
-    
-}
 Function Copy-PnPAllLists {
     param (
         [parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$SourceSiteURL,
@@ -94,9 +53,7 @@ Function Copy-SPOListItems()
         $DestinationConn = Connect-PnPOnline -Url $DestinationSiteURL -Interactive -ReturnConnection
         
         ForEach ($SourceList in $SourceLists) {
-            
             $ListName = $SourceList.Title
-            
             $TemplateFile = "$PSScriptRoot\$SiteTitle\Template$ListName.xml"
             Get-PnPSiteTemplate -Out $TemplateFile -ListsToExtract $ListName -Handlers Lists -Connection $SourceConn 
             Invoke-PnPSiteTemplate -Path $TemplateFile -Connection $DestinationConn
@@ -176,7 +133,7 @@ Function Copy-SPOListItems()
             }
             Invoke-PnPBatch -Batch $Batch -Connection $DestinationConn
             Write-Host $ListName "Copied" -f Magenta
-          
+         
    }}
     Catch {
         Write-host -f Red "Error:" $_.Exception.Message
@@ -194,7 +151,7 @@ Function Copy-PnPAllLibraries {
     $Web = Get-PnPWeb -Connection $SourceConn
     $ExcludedLibrary = @("Site Pages")
     #Get all document libraries
-    $SourceLibraries = Get-PnPList -Includes RootFolder -Connection $SourceConn | Where { $_.BaseType -eq "DocumentLibrary" -and $_.Hidden -eq $False }
+    $SourceLibraries = Get-PnPList -Includes RootFolder -Connection $SourceConn | Where { $_.BaseType -eq "DocumentLibrary" -and $_.Hidden -eq $False -and $_.Title -notin $ExcludedLibrary}
  
     #Connect to the destination site
     $DestinationConn = Connect-PnPOnline -URL $DestinationSiteURL -UseWebLogin -ReturnConnection
@@ -283,6 +240,6 @@ Function Copy-PnPAllPages {
 #$job1 = Start-Job -ScriptBlock { CreateSite -AdminCenterURL $AdminCenterURL -DestinationSiteURL $DestinationSiteURL  -SiteTitle $SiteTitle -SiteOwner $SiteOwner -Template $Template -Timezone $Timezone  }
 #Wait-Job $job1
 #Copy-PnPAllLists -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL
-Copy-SPOListItems -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL
-#Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL
+#Copy-SPOListItems -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL
+Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL
 #Copy-PnPAllPages -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL

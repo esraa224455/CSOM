@@ -26,3 +26,145 @@ CopyItemsOflist.ps1
 CopyOneListToAnotherSiteWithContent.ps1
 CopySiteToAnotherSite.ps1
 ReadItemsOfList.ps1
+New folder1111/SiteFromList
+GoTOSite2og/TemplateCountries.xml
+GoTOSite2og/TemplateCountriesInfo.xml
+GoTOSite2og/TemplateCountriesQuota.xml
+GoTOSite2og/TemplateCountriesRequests.xml
+GoTOSite2og/TemplateEvents.xml
+GoTOSite2og/Templatepilgrims.xml
+GoTOSite2og/TemplateQuestions.xml
+GoTOSite2og/TemplateRequests.xml
+DataCountries.csv
+DataCountriesInfo.csv
+DataCountriesQuota.csv
+DataCountriesRequests.csv
+DataEvents.csv
+DataNEWlist.csv
+Datapilgrims.csv
+DataQuestions.csv
+DataRequests.csv
+New225/TemplateCountries.xml
+New225/TemplateCountriesInfo.xml
+New225/TemplateCountriesQuota.xml
+New225/TemplateCountriesRequests.xml
+New225/TemplateEvents.xml
+New225/TemplateNelist.xml
+New225/TemplateNewList.xml
+New225/TemplateQuestions.xml
+New225/TemplateRequests.xml
+NewTemp/A1 - Technical Support.xml
+NewTemp/A2- System Automation.xml
+NewTemp/A3- Security Operation.xml
+NewTemp/A4-Security Campus.xml
+NewTemp/A5- GA Service.xml
+NewTemp/A6 - GA Relations.xml
+NewTemp/A7-GA Program.xml
+NewTemp/A10- GA Documentation.xml
+NewTemp/A11- GA Business.xml
+NewTemp/A12 - CCC 911.xml
+NewTemp/A13 - Security Director Office.xml
+NewTemp/Events.xml
+NewTemp/TemplateA1 - Technical Support.xml
+NewTemp/TemplateA2- System Automation.xml
+NewTemp/TemplateA3- Security Operation.xml
+NewTemp/TemplateA4-Security Campus.xml
+NewTemp/TemplateA5- GA Service.xml
+NewTemp/TemplateA6 - GA Relations.xml
+NewTemp/TemplateA7-GA Program (Annually).xml
+NewTemp/TemplateA7-GA Program.xml
+NewTemp/TemplateA7-GA Program(Monthly).xml
+NewTemp/TemplateA7-GA Program(Quarterly).xml
+NewTemp/TemplateA8- GA Performance & Quality (Quarterly)1.xml
+NewTemp/TemplateA8- GA Performance & Quality.xml
+NewTemp/TemplateA8-GA  performance & quality(Annually)1.xml
+NewTemp/TemplateA8-GA  Performance & Quality(Bi-Annually)1.xml
+NewTemp/TemplateA9- GA Operation.xml
+NewTemp/TemplateA10- GA Documentation.xml
+NewTemp/TemplateA11- GA Business.xml
+NewTemp/TemplateA12 - CCC 911.xml
+NewTemp/TemplateA13 - Security Director Office.xml
+NewTemp/TemplateAList.xml
+NewTemp/TemplateBook1.xml
+NewTemp/TemplateCountries.xml
+NewTemp/TemplateCountriesInfo.xml
+NewTemp/TemplateCountriesQuota.xml
+NewTemp/TemplateDecisions.xml
+NewTemp/TemplateDevData.xml
+NewTemp/TemplateEmployee.xml
+NewTemp/TemplateForm Links.xml
+NewTemp/Templateforms Emails.xml
+NewTemp/TemplateFruits.xml
+NewTemp/TemplateManager.xml
+NewTemp/TemplateMOHTasks.xml
+NewTemp/TemplateNewEmployee.xml
+NewTemp/TemplateNEWlist.xml
+NewTemp/TemplateNewRequest.xml
+NewTemp/TemplateNewTasks.xml
+NewTemp/TemplateProjects.xml
+NewTemp/TemplateSList.xml
+NewTemp/TemplateStudents.xml
+NewTemp/TemplateSuperStoreUS-2015.xml
+NewTemp/TemplateTasks.xml
+NewTemp/TemplateUploadPictures.xml
+NewTemp/Templateالبلد.xml
+NewTemp/Templateالعواصم.xml
+NewTemp/Templateشيت اكسل.xml
+NewTemp/العواصم.xml
+Temp/Template.xml
+Temp/TemplateA1 - Technical Support.xml
+Temp/TemplateA10- GA Documentation.xml
+Temp/TemplateA11- GA Business.xml
+Temp/TemplateCountries.xml
+Temp1/TemplateCountries.xml
+Temp11/TemplateCountries.xml
+Temp11/TemplateCountriesInfo.xml
+Temp11/TemplateCountriesQuota.xml
+Temp11/TemplateCountriesRequests.xml
+Temp11/TemplateEvents.xml
+Temp11/Templatepilgrims.xml
+Temp11/TemplateQuestions.xml
+Temp11/TemplateRequests.xml
+Temp7/TemplateA1 - Technical Support.xml
+Temp7/TemplateA2- System Automation.xml
+Temp7/TemplateA3- Security Operation.xml
+Temp7/TemplateA4-Security Campus.xml
+Temp7/TemplateA5- GA Service.xml
+Temp7/TemplateA6 - GA Relations.xml
+Temp7/TemplateA7-GA Program (Annually).xml
+Temp7/TemplateA7-GA Program.xml
+Temp7/TemplateA7-GA Program(Monthly).xml
+Temp7/TemplateA7-GA Program(Quarterly).xml
+Temp7/TemplateA8- GA Performance & Quality (Quarterly)1.xml
+Temp7/TemplateA8- GA Performance & Quality.xml
+Temp7/TemplateA8-GA  performance & quality(Annually)1.xml
+Temp7/TemplateA8-GA  Performance & Quality(Bi-Annually)1.xml
+Temp7/TemplateA9- GA Operation.xml
+Temp7/TemplateA10- GA Documentation.xml
+Temp7/TemplateA11- GA Business.xml
+Temp7/TemplateA12 - CCC 911.xml
+Temp7/TemplateA13 - Security Director Office.xml
+Temp7/TemplateAList.xml
+Temp7/TemplateBook1.xml
+Temp7/TemplateCountries.xml
+Temp7/TemplateCountriesInfo.xml
+Temp7/TemplateCountriesQuota.xml
+Temp7/TemplateDecisions.xml
+Temp7/TemplateDevData.xml
+Temp7/TemplateEmployee.xml
+Temp7/TemplateForm Links.xml
+Temp7/Templateforms Emails.xml
+Temp7/TemplateFruits.xml
+Temp7/TemplateManager.xml
+Temp7/TemplateMDecisions.xml
+Temp7/TemplateMOHTasks.xml
+Temp7/TemplateNewEmployee.xml
+Temp7/TemplateNEWlist.xml
+Temp7/TemplateNewRequest.xml
+Temp7/TemplateNewTasks.xml
+Temp7/TemplateProjects.xml
+Temp7/TemplateSList.xml
+Temp7/TemplateStudents.xml
+Temp7/TemplateSuperStoreUS-2015.xml
+Temp7/Templateالعواصم.xml
+New folder1111/SiteFromList

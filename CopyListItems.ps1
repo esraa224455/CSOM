@@ -12,17 +12,26 @@ Function Copy-SPOListItems()
         #Get All Items from the Source List in batches
         Write-Progress -Activity "Reading Source..." -Status "Getting Items from Source List. Please wait..."
         $SourceConn = Connect-PnPOnline -Url $SourceSiteURL -Interactive -ReturnConnection
-        $SourceLists = Get-PnPList -Connection $SourceConn | Where { $_.BaseType -eq "GenericList" -and $_.Hidden -eq $False } | Select Title, Description, ItemCount
+        $SourceLists = Get-PnPList -Connection $SourceConn | Where { $_.BaseType -eq "GenericList" -and $_.Hidden -eq $False }
         $DestinationConn = Connect-PnPOnline -Url $DestinationSiteURL -Interactive -ReturnConnection
-              ForEach ($SourceList in $SourceLists) {
-        $ListName = $SourceList.Title 
-            if($ListName -eq "A10- GA Documentation" ){
+        $DestinationLists = Get-PnPList -Connection $DestinationConn
+            ForEach ($SourceList in $SourceLists) {
+            $ListName = $SourceList.Title 
+            if($ListName -eq "SuperStoreUS-2015"){
             #Copy-PnPList -Identity $ListName -Connection $SourceConn -DestinationWebUrl $DestinationSiteURL
             $SourceListItems = Get-PnPListItem -List $ListName -Connection $SourceConn
             $Batch = New-PnPBatch -Connection $DestinationConn
             $SourceListItemsCount= $SourceListItems.count
             Write-host $ListName "Total Number of Items Found:"$SourceListItemsCount     
-   
+            If (($DestinationLists.Title -contains $ListName)) {
+                #Copy column value from Source to Destination
+                    Remove-PnPList -Identity $ListName -Force -Connection $DestinationConn
+                    write-host "Removed"
+                    Copy-PnPList -Identity $ListName -Connection $SourceConn -DestinationWebUrl $DestinationSiteURL
+                    }
+                   else{
+                   Copy-PnPList -Identity $ListName -Connection $SourceConn -DestinationWebUrl $DestinationSiteURL
+                   }
             #Get fields to Update from the Source List - Skip Read only, hidden fields, content type and attachments
             $SourceListFields = Get-PnPField -List $ListName -Connection $SourceConn | Where { (-Not ($_.ReadOnlyField)) -and (-Not ($_.Hidden)) -and ($_.InternalName -ne  "ContentType") -and ($_.InternalName -ne  "Attachments") }
         
@@ -75,15 +84,8 @@ Function Copy-SPOListItems()
                 #$ItemValue.add("Editor", $SourceItem["Editor"].Email);
  
                 Write-Progress -Activity "Copying List Items:" -Status "Copying Item ID '$($SourceItem.Id)' from Source List ($($Counter) of $($SourceListItemsCount))" -PercentComplete (($Counter / $SourceListItemsCount) * 100)
-                $DestinationLists = Get-PnPList -Connection $DestinationConn
-                If (($DestinationLists.Title -contains $ListName)) {
-                #Copy column value from Source to Destination
-                    Remove-PnPList -Identity $ListName -Force -Connection $DestinationConn
-                    Copy-PnPList -Identity $ListName -Connection $SourceConn -DestinationWebUrl $DestinationSiteURL
-                    }
-                   else{
-                   Copy-PnPList -Identity $ListName -Connection $SourceConn -DestinationWebUrl $DestinationSiteURL
-                   }
+                
+                
                 Add-PnPListItem -List $ListName -Values $ItemValue -Connection $DestinationConn -Batch $Batch 
                 Write-Host $Counter
                  
@@ -94,12 +96,15 @@ Function Copy-SPOListItems()
                 Write-Host "Copied Item ID from Source to Destination List:$($SourceItem.Id) ($($Counter) of $($SourceListItemsCount))"
                 $Counter++
             }
-                }
+            
 
             Invoke-PnPBatch -Batch $Batch -Connection $DestinationConn
             Write-Host $ListName "Copied" -f Magenta
-         }
-         
+     
+   
+   
+   }
+   }
    }
     Catch {
         Write-host -f Red "Error:" $_.Exception.Message
@@ -110,7 +115,7 @@ Function Copy-SPOListItems()
 #Set Parameters
 $SourceSiteURL = "https://t6syv.sharepoint.com/sites/EsraaTeamSite"
 
-$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/Coooope"
+$DestinationSiteURL = "https://t6syv.sharepoint.com/sites/CsomSit"
    
 #Call the Function to Copy List Items between Lists
 Copy-SPOListItems -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL
