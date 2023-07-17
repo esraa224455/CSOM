@@ -33,7 +33,7 @@ Try {
 
     $SourceSiteURL = "https://t6syv.sharepoint.com/sites/SourceClientSite/$subSiteTitle"
     $DestinationSiteURL = "https://t6syv.sharepoint.com/sites/RecordSite/$subSiteTitle"
-    #Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL
+    Copy-PnPAllLibraries -SourceSiteURL $SourceSiteURL -DestinationSiteURL $DestinationSiteURL
 }
 catch {
     write-host "Error: $($_.Exception.Message)" -foregroundcolor Red

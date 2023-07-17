@@ -23,9 +23,9 @@ Try {
     $Context.Credentials = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($UserName,(ConvertTo-SecureString $Password -AsPlainText -Force))
     
     $WebSub = New-Object Microsoft.SharePoint.Client.WebCreationInformation
-    $WebSub.Title = "HelloSubSite"
+    $WebSub.Title = $subSiteTitle
     $WebSub.WebTemplate = "OFFILE#1" 
-    $WebSub.Url = "HelloSubSite"
+    $WebSub.Url = $subSiteTitle
     $SubWeb = $Context.Web.Webs.Add($WebSub)
     $Context.ExecuteQuery()
  
